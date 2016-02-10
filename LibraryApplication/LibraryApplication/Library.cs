@@ -101,6 +101,7 @@ namespace LibraryApplication
         {
             for (int i = 0; i < bookList.Count; i++)
             {
+                bool matches = bookList.Any(item => bookList[i].bookTitle == title);
                 //check that the book exists in the bookList
                 if (title.Equals(bookList[i].bookTitle) && bookList[i].isBorrowed().Equals(false))
                 {
@@ -110,9 +111,7 @@ namespace LibraryApplication
                 else if (bookList[i].isBorrowed() == true)
                 {
                     Console.WriteLine("Sorry, {0} is already borrowed.", bookList[i].bookTitle);
-                    break;
-                }
-                else if (title != bookList[i].bookTitle) { Console.WriteLine("That Book Doesn't Exist in this Library"); }
+                }else if (matches){ Console.WriteLine("That Book Doesn't Exist in this Library"); }
             }
         }
 
